@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+/* Hide Arrows From Input Number */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono', monospace;
+}
+
+:root {
+    /* Colors */
+    --c-primary: hsl(172, 67%, 45%);
+    --c-error: hsl(10, 63%, 61%);
+    --c-hover: hsl(173, 61%, 77%);
+    --cN-00: hsl(183, 100%, 15%);
+    --cN-05: hsl(183, 79%, 24%);
+    --cN-10: hsl(186, 14%, 43%);
+    --cN-20: hsl(184, 14%, 56%);
+    --cN-30: hsl(185, 41%, 84%);
+    --cN-40: hsl(189, 41%, 97%);
+    --cN-50: hsl(0, 0%, 100%);
+
+    /* Font sizes*/
+    --fs-small: 16px;
+    --fs-regular: 18px;
+    --fs-large: 24px;
+    --fs-big: 36px;
+    --fs-massive: 48px;
+
+    /* Other */
+    --outline-input: 2px solid; 
+}
+
+
+
+/*  STATES  */
+input:focus {outline:none}
+button, input {cursor: pointer;}
+
+input[type="number"]:focus {outline: var(--outline-input) var(--c-primary);}
+.error-input {outline: var(--outline-input) var(--c-error);}
+.tip-button-group input[type="button"].selected {background: var(--c-primary)!important; color: var(--cN-50)!important;}
+.tip-button-group input[type="button"]:hover {color: var(--cN-00);}
+.inactive {opacity: 20%; cursor:no-drop;}
+.inactive:hover {background: var(--c-primary)!important;}
+
+.tip-button-group input[type="button"]:hover,
+.reset:hover {background: var(--c-hover);}
+/*///////////////////////////////////////////////////////*/
+
+
+
+/*  MAIN STYLING & STRUCTURE  */
+body {
+    background: var(--cN-30);
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.logo {margin: auto 0;}
+
+
+
+.calculator {
+    border-radius: 30px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: var(--cN-50);
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+input[type="number"] {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    text-align: right;
+    background: var(--cN-40) no-repeat 1rem 50%;
+}
+#bill {background-image: url(images/icon-dollar.svg);}
+#num-people {background-image: url(images/icon-person.svg);}
+
+
+
+.result {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 20px;
+    background: var(--cN-00);
+}
+.result section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip-button-group {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    grid-gap: 20px;
+}
+.tip-button-group input, .reset {
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.tip-button-group input[type="button"] {background: var(--cN-00);}
+.reset {background: var(--c-primary);}
+/*///////////////////////////////////////////////////////*/
+
+
+
+/*  TYPOGRAPHY  */
+* {font-weight: 700;}
+
+h3 {font-size: var(--fs-small);};
+label, .error-text {font-size: var(--fs-regular);}
+h2 {font-size: var(--fs-regular);}
+input {font-size: var(--fs-large);} 
+.amount {font-size: var(--fs-big);} 
+.reset {font-size: var(--fs-large); text-transform: uppercase;}
+
+h2 {color: var(--cN-40);}
+h3 {color: var(--cN-20);}
+label {color: var(--cN-10);}
+input[type="button"] {color: var(--cN-50);}
+input[type="number"] {color: var(--cN-00);}
+.amount {color: var(--c-primary);}
+.reset {color: var(--cN-00);}
+.error-text {color: var(--c-error); display: none;}
+/*///////////////////////////////////////////////////////*/
+
+
+
+@media (min-width: 1100px) {
+    .logo {margin: 0 0 5vh 0}
+    .amount {font-size: var(--fs-massive);}
+
+    main {
+        justify-content: center;
+        position: relative;
+        bottom: auto;
+    }
+
+    .calculator {
+        flex-direction: row;
+        align-items: center;
+        padding: 3rem;
+        width: 900px;
+        gap: 3rem;
+    }
+
+    form {
+        width: 50%;
+    }
+
+    .tip-button-group {
+        grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .result {
+        height: 100%;
+        width: 50%;
+    }
+
+    .reset {margin: auto 0 1rem 0;}
+}
